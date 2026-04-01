@@ -4,7 +4,7 @@
 
 Welcome! This guide explains how the website works and how to make common updates.
 You do not need to be a programmer to make basic changes. If you can edit a Word document,
-you can edit this website. Read through this once before making any changes — it will
+you can edit this website. Read through this once before making any changes, it will
 make everything much less intimidating.
 
 ---
@@ -14,7 +14,7 @@ make everything much less intimidating.
 This website is made of plain text files. There's no database, no login portal,
 no server to manage. When you open one of the `.html` files in a text editor,
 you'll see the words from the website mixed in with some labels that look like
-`<this>`. Those labels are called **HTML tags** — they just tell the browser how
+`<this>`. Those labels are called **HTML tags** they just tell the browser how
 to display the words. You mostly don't need to touch the tags, only the words
 between them.
 
@@ -23,7 +23,7 @@ between them.
 For example, this is safe to edit — change the part between the tags:
 ```
 <h2>Welcome to Bethany</h2>
-          ↑ change this ↑
+     ↑ change this ↑
 ```
 
 This is not safe to edit — leave the tag itself alone:
@@ -41,7 +41,7 @@ If you're ever unsure, make a copy of the file before editing so you can put it 
 Think of these files like the pages and rooms of the website:
 
 ```
-http/
+bethanyWeb/
 │
 ├── index.html       ← The homepage (the front door)
 ├── about.html       ← The "About Us" page
@@ -63,14 +63,14 @@ http/
 ```
 
 **The files you'll edit most often are `index.html`, `about.html`, and `contact.html`.**
-The `css/` and `js/` folders control how things look and behave — it's best to leave
+The `css/` and `js/` folders control how things look and behave, it's best to leave
 those alone unless you're confident making design changes.
 
 ---
 
 ## How to Edit the Website
 
-The easiest way to make changes is directly on GitHub's website — no downloads,
+The easiest way to make changes is directly on GitHub's website, no downloads,
 no software, no technical setup required. All you need is a free GitHub account
 and a web browser.
 
@@ -82,7 +82,7 @@ and a web browser.
    "Edit this file" when you hover over it.
 4. The file will open in a simple text editor right in your browser.
 5. Find the text you want to change (use **Ctrl+F** or **Cmd+F** to search).
-6. Make your edit — remember, only change the words between the tags, not the
+6. Make your edit: remember, only change the words between the tags, not the
    tags themselves (see the golden rule above).
 7. When you're done, scroll to the bottom and click the green **Commit changes**
    button. You can leave the default message or write a short note about what
@@ -108,13 +108,13 @@ are waiting on information from the church. Here's a summary:
 
 | What | Where to find it | What to replace it with |
 |---|---|---|
-| Founding year | `index.html` — hero section | The year the church was founded |
-| Mission statement | `index.html` — welcome section | The approved mission statement |
-| Welcome message | `index.html` — welcome section | A paragraph welcoming visitors |
+| Founding year | `index.html` - hero section | The year the church was founded |
+| Mission statement | `index.html` - welcome section | The approved mission statement |
+| Welcome message | `index.html` - welcome section | A paragraph welcoming visitors |
 | Pastor's name | `about.html` | The pastor's full name |
 | Pastor's biography | `about.html` | A short 2–4 sentence bio |
 | Pastor's photo | `about.html` | See "Adding a Photo" below |
-| YouTube channel | All pages — footer & social section | The YouTube channel URL |
+| YouTube channel | All pages - footer & social section | The YouTube channel URL |
 | Donate link | All pages — "Give Online" buttons | The Tithe.ly or SimpleGive URL |
 | Belief card details | `about.html` | Can be edited to match congregation's voice |
 
@@ -146,7 +146,7 @@ Make sure both match.
 
 ### Updating the "Give Online" donation link
 
-Search for the Give Online buttons — they look like this:
+Search for the Give Online buttons, they look like this:
 ```html
 <a href="#" class="btn btn--give" ...>
 ```
@@ -154,7 +154,7 @@ Replace the `#` with your donation platform URL, for example:
 ```html
 <a href="https://tithe.ly/give?c=YOURCHURCHID" class="btn btn--give" ...>
 ```
-There are a few Give buttons across the pages — search for `btn--give` to find them all.
+There are a few Give buttons across the pages, search for `btn--give` to find them all.
 
 ### Updating the YouTube link
 
@@ -168,10 +168,10 @@ links with the YouTube channel URL.
 To add the pastor's photo (or any photo):
 
 1. Put the photo file in the `images/` folder. Name it something simple with no
-   spaces — like `pastor-smith.jpg`.
+   spaces like `pastor-smith.jpg`.
 2. Open `about.html` and find the pastor section. Look for this placeholder block:
    ```html
-   Photo placeholder —
+   Photo placeholder -
    replace with pastor's photo
    ```
 3. Replace the entire placeholder `<div>` with a simple image tag:
@@ -180,7 +180,7 @@ To add the pastor's photo (or any photo):
         alt="Pastor [Name], pastor of Bethany Presbyterian Church"
         style="border-radius: 16px; width: 100%; max-width: 360px; display: block; margin-inline: auto;">
    ```
-4. Update the `alt="..."` text to describe the photo — this is important for
+4. Update the `alt="..."` text to describe the photo, this is important for
    visually impaired visitors using screen readers.
 
 **Photo tips:**
@@ -194,7 +194,7 @@ To add the pastor's photo (or any photo):
 
 Adding a new page (like a History page or a Photo Gallery) takes about 10 minutes:
 
-1. **Make a copy** of `about.html` and rename it — for example, `history.html`.
+1. **Make a copy** of `about.html` and rename it, for example, `history.html`.
 
 2. **Update the tab title** near the top of the new file:
    ```html
@@ -280,7 +280,7 @@ Copy and paste these to build your new page content:
 
 The website is hosted on **GitHub Pages**, which is free. Any time you commit a
 change on GitHub (using the pencil editor described above), the live website
-updates automatically within about a minute — there's nothing else to do.
+updates automatically within about a minute, there's nothing else to do.
 
 ### Connecting the domain name (bethanypresbyterianontario.com)
 
@@ -295,9 +295,9 @@ add these DNS records pointing to GitHub's servers:
 | A     | @    | 185.199.111.153     |
 | CNAME | www  | yourusername.github.io |
 
-Then in the GitHub repository go to **Settings → Pages**, enter
+Then in the GitHub repository go to **Settings -> Pages**, enter
 `bethanypresbyterianontario.com` in the Custom Domain field, and check
-**Enforce HTTPS**. DNS changes can take up to 48 hours to fully take effect —
+**Enforce HTTPS**. DNS changes can take up to 48 hours to fully take effect,
 this is normal.
 
 ---
@@ -311,9 +311,9 @@ Here are the real links already wired into the site:
 | Facebook page | https://www.facebook.com/BethanyPresbyterianChurch/ |
 | Facebook livestream | https://www.facebook.com/BethanyPresbyterianChurch/live/ |
 | Google Maps | Links to Bethany Presbyterian Church listing |
-| Donate | ⚠️ Still a placeholder — needs to be updated |
-| YouTube | ⚠️ Still a placeholder — needs to be updated |
-| Email | info@bethanypresbyterianontario.com ⚠️ Confirm this is correct |
+| Donate | !! Still a placeholder - needs to be updated |
+| YouTube | !! Still a placeholder - needs to be updated |
+| Email | info@bethanypresbyterianontario.com !! Still a placeholder - needs to be updated |
 
 ---
 
@@ -333,8 +333,7 @@ You probably won't need to change these, but just in case:
 | Sage Green | `#3D7A52` | "Give Online" buttons |
 
 **Fonts:** Headings use *Playfair Display* (a classic serif font). Body text uses
-*Inter* (a clean, modern font). Both load automatically from Google Fonts — no
-installation needed.
+*Inter* (a clean, modern font). Both load automatically from Google Fonts
 
 ---
 
@@ -349,17 +348,17 @@ This site is built to be usable by everyone, including people with disabilities:
 - Works in Windows High Contrast mode
 
 When editing content, please keep these in mind:
-- Always fill in `alt="..."` on any images you add — describe what's in the photo
+- Always fill in `alt="..."` on any images you add, describe what's in the photo
 - Don't use color alone to convey meaning (e.g. don't say "click the red button")
-- Keep link text descriptive — "Learn about our worship services" is better than "click here"
+- Keep link text descriptive for blind users "Learn about our worship services" is better than "click here"
 
 ---
 
 ## Getting Help
 
 If something breaks or you're not sure how to make a change, the best approach is
-to share the file with whoever built the site originally. Even small questions are
-fine — it's much easier to help with a small question than to fix something after
+to share the file with the original site designer. Even small questions are
+fine, he doesn't mind - it's easier to help with a small question than to fix something after
 an unintended change has been made.
 
 When asking for help, it's useful to describe:
@@ -368,6 +367,10 @@ When asking for help, it's useful to describe:
 3. What it looks like now vs. what you expected
 
 ---
+
+## One last thing
+
+Because this site is on github we really *can't* lose anything, every change is saved here in the history of this project, so you really can't permanently hurt anything, you can only break things temporarily until someone goes into the history and sets it back to how it was, this is out of the scope of this help document but don't be scared to make a mistake, we can always fix it. When in doubt contact the original site designer and he will repair it.
 
 *Bethany Presbyterian Church · Ontario, Oregon*
 *Last updated: 2026*
