@@ -56,8 +56,10 @@ bethanyWeb/
 │                       (you won't need to edit this)
 │
 ├── images/
-│   ├── emblem-color.svg   ← The church logo (color version, used in the header)
-│   └── emblem-white.svg   ← The church logo (white version, used in the footer)
+│   ├── emblem-color.svg      ← The church logo (color version, used in the header)
+│   ├── emblem-white.svg      ← The church logo (white version, used in the footer)
+│   ├── bethany_entrance.jpg  ← Photo of the church entrance (hero background on the homepage)
+│   └── reverend_linda.jpg    ← Photo of Reverend Linda Toth (used on the About page)
 │
 └── README.md        ← This guide
 ```
@@ -108,15 +110,15 @@ are waiting on information from the church. Here's a summary:
 
 | What | Where to find it | What to replace it with |
 |---|---|---|
-| Founding year | `index.html` - hero section | The year the church was founded |
-| Mission statement | `index.html` - welcome section | The approved mission statement |
-| Welcome message | `index.html` - welcome section | A paragraph welcoming visitors |
-| Pastor's name | `about.html` | The pastor's full name |
-| Pastor's biography | `about.html` | A short 2–4 sentence bio |
-| Pastor's photo | `about.html` | See "Adding a Photo" below |
-| YouTube channel | All pages - footer & social section | The YouTube channel URL |
+| Founding year | `index.html` — hero section | The year the church was founded |
+| Mission statement | `index.html` — welcome section | The approved mission statement |
+| Welcome message | `index.html` — welcome section | A paragraph welcoming visitors |
+| Pastor's biography | `about.html` — pastor section | A short 2–4 sentence bio |
+| ~~YouTube channel~~ | ~~All pages — footer & social section~~ | ✅ Done |
 | Donate link | All pages — "Give Online" buttons | The Tithe.ly or SimpleGive URL |
-| Belief card details | `about.html` | Can be edited to match congregation's voice |
+| Belief card details | `about.html` — "What We Believe" | Edit to match the congregation's voice |
+
+✅ **Already done:** Pastor's name (Reverend Linda Toth), pastor's photo, church entrance photo, Facebook links, Google Maps embed.
 
 ---
 
@@ -163,30 +165,184 @@ links with the YouTube channel URL.
 
 ---
 
-## Adding a Photo
+## Updating Photos
 
-To add the pastor's photo (or any photo):
+The site currently has two photos:
+- **`images/reverend_linda.jpg`** — Reverend Linda Toth's portrait, shown on the About page
+- **`images/bethany_entrance.jpg`** — The church entrance, used as the background of the homepage hero
 
-1. Put the photo file in the `images/` folder. Name it something simple with no
-   spaces like `pastor-smith.jpg`.
-2. Open `about.html` and find the pastor section. Look for this placeholder block:
+### Updating the pastor's photo
+
+If the reverend's photo ever needs to be replaced (new headshot, new pastor, etc.):
+
+1. Prepare the new photo file. Name it simply with no spaces —
+   `reverend_linda.jpg` to replace the existing one, or a new name like
+   `reverend_smith.jpg` for a new pastor.
+2. Upload it to the `images/` folder on GitHub:
+   - Go to the `images/` folder in the repository
+   - Click **Add file → Upload files**
+   - Drag your photo in and click **Commit changes**
+3. If you used the **same filename** (`reverend_linda.jpg`), you're done —
+   the website will automatically show the new photo.
+4. If you used a **new filename**, open `about.html` in the GitHub editor,
+   search for `reverend_linda.jpg`, and replace it with your new filename.
+   Also update the `alt="..."` text if the pastor has changed:
    ```html
-   Photo placeholder -
-   replace with pastor's photo
+   <img src="./images/reverend_smith.jpg"
+        alt="Reverend Smith, pastor of Bethany Presbyterian Church"
+        ...>
    ```
-3. Replace the entire placeholder `<div>` with a simple image tag:
-   ```html
-   <img src="./images/pastor-smith.jpg"
-        alt="Pastor [Name], pastor of Bethany Presbyterian Church"
-        style="border-radius: 16px; width: 100%; max-width: 360px; display: block; margin-inline: auto;">
-   ```
-4. Update the `alt="..."` text to describe the photo, this is important for
-   visually impaired visitors using screen readers.
 
-**Photo tips:**
-- JPG files are fine for photos; keep them under 1–2 MB if possible
-- A square or portrait (taller than wide) crop looks best in that spot
-- Avoid file names with spaces — use hyphens instead (`pastor-john.jpg` not `pastor john.jpg`)
+### Updating the church entrance photo
+
+If you want to replace the homepage background photo:
+
+1. Upload the new photo to the `images/` folder (see step 2 above).
+2. Open `css/style.css` in the GitHub editor and search for `bethany_entrance.jpg`.
+3. Replace it with your new filename. The line looks like:
+   ```
+   url('../images/bethany_entrance.jpg');
+   ```
+
+### General photo tips
+
+- JPG files are ideal for photos; try to keep them under 2 MB for fast loading
+- For the pastor portrait, a square or portrait (taller than wide) crop looks best
+- For the homepage background, a wide landscape photo works best
+- Never use spaces in filenames — use underscores or hyphens instead
+  (`new_photo.jpg` not `new photo.jpg`)
+- Always update the `alt="..."` description when swapping a photo — it's what
+  screen readers announce to blind visitors
+
+---
+
+## Embedding a YouTube Video
+
+You can add a YouTube video to any page — for example, a recent sermon, a welcome video,
+or a recorded worship service. The video will scale automatically to fit any screen size
+and meets the accessibility standards built into this site.
+
+### Step 1 — Get the embed link from YouTube
+
+1. Go to the video on YouTube.
+2. Click **Share** (below the video).
+3. Click **Embed** in the share panel.
+4. YouTube will show a block of HTML code. You only need the **`src`** web address from
+   inside that code. It looks like this:
+   ```
+   https://www.youtube.com/embed/XXXXXXXXXXX
+   ```
+   Copy just that address — you don't need the rest of the code YouTube gives you.
+
+> **Privacy tip:** You can replace `youtube.com` with `youtube-nocookie.com` in that
+> address. This version of the embed does not set tracking cookies on your visitors
+> until they actually press play. Example:
+> ```
+> https://www.youtube-nocookie.com/embed/XXXXXXXXXXX
+> ```
+
+### Step 2 — Paste this snippet into the page
+
+Find the section of the page where you want the video to appear and paste this block
+of HTML in, replacing `YOUR-VIDEO-ID-HERE` with the ID from the address you copied
+(the part after `/embed/`), and updating the `title` to describe the video:
+
+```html
+<div class="container" style="padding-block: var(--space-8);">
+  <div class="video-container">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/YOUR-VIDEO-ID-HERE"
+      title="Bethany Presbyterian Church — Sunday Sermon, April 6 2026"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+</div>
+```
+
+Change the `title="..."` text to briefly describe what the video is. This is what
+screen readers announce to blind visitors before they decide whether to play it —
+so "Bethany Presbyterian Church — Sunday Sermon, April 6 2026" is much better than
+"YouTube video".
+
+### Placing the video inside a full section (with a heading)
+
+If you want a heading above the video as well, wrap it in a full section like this:
+
+```html
+<section class="section section--ivory" aria-labelledby="sermon-heading">
+  <div class="container">
+    <header class="section__header">
+      <h2 id="sermon-heading" class="section__heading">Recent Sermon</h2>
+      <div class="divider divider--cobalt" aria-hidden="true">
+        <span class="divider__cross">✛</span>
+      </div>
+    </header>
+    <div class="video-container" style="max-width: 800px; margin-inline: auto;">
+      <iframe
+        src="https://www.youtube-nocookie.com/embed/YOUR-VIDEO-ID-HERE"
+        title="Bethany Presbyterian Church — Sunday Sermon, April 6 2026"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+```
+
+The `max-width: 800px; margin-inline: auto;` keeps the video from stretching too wide
+on large screens — feel free to adjust the number or remove it entirely.
+
+### Portrait videos (filmed on a phone or streamed on Facebook Live)
+
+If a video was recorded in portrait orientation (tall and narrow — common when filmed
+on a phone or broadcast via Facebook Live), embedding it in the standard 16:9 box will
+look wrong: the video will be squished into the centre with large black bars on either
+side.
+
+For these videos, add `video-container--portrait` to the class, like this:
+
+```html
+<div class="video-container video-container--portrait">
+  <iframe
+    src="https://www.youtube-nocookie.com/embed/YOUR-VIDEO-ID-HERE"
+    title="Bethany Presbyterian Church — Sunday Worship, April 6 2026"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    loading="lazy">
+  </iframe>
+</div>
+```
+
+This gives the player a tall (9:16) shape that matches the video, centred on the page
+at a comfortable width. It resizes correctly on mobile automatically.
+
+**How to tell if a video is portrait:** open the video on YouTube — if it has black bars
+above and below the player (letterbox bars), it is landscape and you should use the
+standard `video-container`. If it has black bars to the left and right (pillarbox bars),
+it is portrait and you should use `video-container video-container--portrait`.
+
+**Working example:** The file `easter2026.html` in this project is a real example of a
+portrait video embed using this technique. Open it to see how the layout looks, or read
+the code in that file to see it in context.
+
+> **Note:** YouTube embeds will not play when you open an HTML file directly from your
+> computer by double-clicking it. You will see a player error. This is normal — YouTube
+> requires a proper web address (`http://...`) to allow embeds. The video will work
+> correctly once the site is live on GitHub Pages.
+
+### Things to keep in mind
+
+- **Always fill in the `title` attribute.** It is required for accessibility.
+  Screen reader users hear this text before deciding whether to interact with the video.
+- **`loading="lazy"`** means the video only loads when the visitor scrolls near it,
+  which keeps the page fast.
+- Videos resize automatically on all screen sizes — you don't need to do anything
+  special for phones.
+- You can add as many videos to a page as you like; just repeat the snippet with
+  a different `src` and `title` each time.
 
 ---
 
@@ -312,7 +468,7 @@ Here are the real links already wired into the site:
 | Facebook livestream | https://www.facebook.com/BethanyPresbyterianChurch/live/ |
 | Google Maps | Links to Bethany Presbyterian Church listing |
 | Donate | !! Still a placeholder - needs to be updated |
-| YouTube | !! Still a placeholder - needs to be updated |
+| YouTube | https://www.youtube.com/@BethanyPresbyterian-Ont |
 | Email | info@bethanypresbyterianontario.com !! Still a placeholder - needs to be updated |
 
 ---

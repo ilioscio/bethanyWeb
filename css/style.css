@@ -527,7 +527,12 @@ small { font-size: var(--text-sm); }
 
 .hero {
   min-height: calc(92vh - var(--header-height));
-  background-color: var(--clr-cobalt);
+  background-color: var(--clr-cobalt); /* fallback colour if photo fails to load */
+  background-image:
+    linear-gradient(rgba(0, 40, 100, 0.70), rgba(0, 30, 80, 0.80)),
+    url('../images/bethany_entrance.jpg');
+  background-size: cover;
+  background-position: center top;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -839,6 +844,33 @@ small { font-size: var(--text-sm); }
   width: 100%;
   height: 340px;
   display: block;
+}
+
+/* ── Responsive video embed ─────────────────────────────────── */
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background-color: #000;
+}
+
+/* Portrait videos (filmed on a phone / Facebook Live) */
+.video-container--portrait {
+  aspect-ratio: 9 / 16;
+  max-width: 380px;
+  margin-inline: auto;
+}
+
+.video-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
 }
 
 .contact-details {
