@@ -110,15 +110,15 @@ are waiting on information from the church. Here's a summary:
 
 | What | Where to find it | What to replace it with |
 |---|---|---|
-| Founding year | `index.html` — hero section | The year the church was founded |
-| Mission statement | `index.html` — welcome section | The approved mission statement |
-| Welcome message | `index.html` — welcome section | A paragraph welcoming visitors |
-| Pastor's biography | `about.html` — pastor section | A short 2–4 sentence bio |
+| ~~Founding year~~ | ~~`index.html` — hero section~~ | ✅ Done |
+| ~~Mission statement~~ | ~~`index.html` — welcome section~~ | ✅ Done |
+| ~~Welcome message~~ | ~~`index.html` — welcome section~~ | ✅ Done |
+| ~~Pastor's biography~~ | ~~`about.html` — pastor section~~ | ✅ Done |
 | ~~YouTube channel~~ | ~~All pages — footer & social section~~ | ✅ Done |
+| ~~Belief card details~~ | ~~`about.html` — "What We Believe"~~ | ✅ Done |
 | Donate link | All pages — "Give Online" buttons | The Tithe.ly or SimpleGive URL |
-| Belief card details | `about.html` — "What We Believe" | Edit to match the congregation's voice |
 
-✅ **Already done:** Pastor's name (Reverend Linda Toth), pastor's photo, church entrance photo, Facebook links, Google Maps embed.
+✅ **Already done:** Pastor's name (Reverend Linda Toth), pastor's photo, church entrance photo, Facebook links, Google Maps embed, email address, YouTube channel, founding year, mission statement, welcome message, pastor bio, belief cards.
 
 ---
 
