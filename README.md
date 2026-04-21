@@ -469,7 +469,7 @@ Here are the real links already wired into the site:
 | Google Maps | Links to Bethany Presbyterian Church listing |
 | Donate | !! Still a placeholder - needs to be updated |
 | YouTube | https://www.youtube.com/@BethanyPresbyterian-Ont |
-| Email | info@bethanypresbyterianontario.com !! Still a placeholder - needs to be updated |
+| Email | bethanypresoffice@gmail.com |
 
 ---
 

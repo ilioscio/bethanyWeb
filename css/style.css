@@ -989,6 +989,8 @@ small { font-size: var(--text-sm); }
   color: var(--clr-ivory);
   position: relative;
   overflow: hidden;
+  background-size: cover;
+  background-position: center;
 }
 
 .page-banner::before {
@@ -1028,6 +1030,12 @@ small { font-size: var(--text-sm); }
   margin-inline: auto;
   margin-top: var(--space-4);
   margin-bottom: 0;
+}
+
+@media (min-width: 1024px) {
+  .page-banner--about {
+    background-position: center 35%;
+  }
 }
 
 
