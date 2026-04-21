@@ -86,8 +86,13 @@
           <li><a href="./about.html"   class="nav__link">About</a></li>
           <li><a href="./contact.html" class="nav__link">Contact</a></li>
           <!-- PLACEHOLDER: Replace # with donation platform URL (Paypal, Tithe.ly or SimpleGive) -->
-          <li><a href="#"              class="nav__link nav__link--give"
-                 aria-label="Give online to Bethany Presbyterian Church">Give</a></li>
+          <!-- Remove tooltip-wrapper span and btn-tooltip span below when donation link is live -->
+          <li><span class="tooltip-wrapper">
+            <a href="#" class="nav__link nav__link--give"
+               aria-label="Give online to Bethany Presbyterian Church"
+               aria-describedby="tooltip-give-nav">Give</a>
+            <span id="tooltip-give-nav" role="tooltip" class="btn-tooltip btn-tooltip--below">Coming soon</span>
+          </span></li>
         </ul>
       </nav>
 
@@ -133,17 +138,22 @@
           </a>
 
           <!-- PLACEHOLDER: Replace # with Paypal or Tithe.ly or SimpleGive donation URL -->
-          <a href="#"
-             class="btn btn--give"
-             aria-label="Give online to Bethany Presbyterian Church"
-             rel="noopener noreferrer"
-             target="_blank">
-            <!-- Heart icon -->
-            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </svg>
-            Give Online
-          </a>
+          <!-- Remove tooltip-wrapper span and btn-tooltip span below when donation link is live -->
+          <span class="tooltip-wrapper">
+            <a href="#"
+               class="btn btn--give"
+               aria-label="Give online to Bethany Presbyterian Church"
+               aria-describedby="tooltip-give-hero"
+               rel="noopener noreferrer"
+               target="_blank">
+              <!-- Heart icon -->
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+              Give Online
+            </a>
+            <span id="tooltip-give-hero" role="tooltip" class="btn-tooltip">Coming soon</span>
+          </span>
         </div>
 
       </div>
@@ -286,16 +296,21 @@
             </p>
 
             <!-- PLACEHOLDER: Replace # with Paypal or Tithe.ly or SimpleGive URL -->
-            <a href="#"
-               class="btn btn--give"
-               rel="noopener noreferrer"
-               target="_blank"
-               aria-label="Give online to Bethany Presbyterian Church">
-              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-              </svg>
-              Give Online
-            </a>
+            <!-- Remove tooltip-wrapper span and btn-tooltip span below when donation link is live -->
+            <span class="tooltip-wrapper">
+              <a href="#"
+                 class="btn btn--give"
+                 rel="noopener noreferrer"
+                 target="_blank"
+                 aria-label="Give online to Bethany Presbyterian Church"
+                 aria-describedby="tooltip-give-card">
+                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                Give Online
+              </a>
+              <span id="tooltip-give-card" role="tooltip" class="btn-tooltip">Coming soon</span>
+            </span>
 
           </article>
 
