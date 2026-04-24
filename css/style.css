@@ -1359,6 +1359,17 @@ small { font-size: var(--text-sm); }
   max-width: none;
 }
 
+.footer__privacy-link {
+  color: rgba(255,255,240,0.4);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer__privacy-link:hover,
+.footer__privacy-link:focus {
+  color: rgba(255,255,240,0.75);
+}
+
 .footer__social-links {
   display: flex;
   gap: var(--space-3);
