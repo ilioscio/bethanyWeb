@@ -129,22 +129,16 @@ are waiting on information from the church. Here's a summary:
 Open `index.html`. Search for `10:00 – 11:00 AM` (there are a few instances).
 Change the time text. Do the same in `about.html` and `contact.html`.
 
-### Changing the address or phone number
+### Changing the address
 
-Search for `1712 W Idaho Ave` or `541-889-5752` across all three HTML files
-and update each one. There are usually two or three instances per page
-(once in the main content, once in the footer).
+Search for `1712 W Idaho Ave` across all HTML files and update each instance.
+The address appears as visible text and inside Google Maps links — update both.
 
-### Changing the email address
+### Changing the phone number or email address
 
-Search for `info@bethanypresbyterianontario.com` in all three files.
-Replace every instance with the real email address. Each `href="mailto:..."`
-and the visible text both need to be updated. Example:
-```html
-<a href="mailto:office@bethanyontario.com">office@bethanyontario.com</a>
-                  ↑ the actual link          ↑ the visible text
-```
-Make sure both match.
+**These are obfuscated — see the section "Changing Obfuscated Contact Details"
+below.** Do not search for the phone number or email address directly in the
+HTML files; you will not find them. Follow the instructions in that section instead.
 
 ### Updating the "Give Online" donation link
 
@@ -162,6 +156,115 @@ There are a few Give buttons across the pages, search for `btn--give` to find th
 
 Search for `aria-label="YouTube"` in each file. Replace the `href="#"` on those
 links with the YouTube channel URL.
+
+---
+
+## Changing Obfuscated Contact Details
+
+To protect the church's contact information from spam harvesters and bots, the
+phone number, email addresses, and application email are **not written as plain
+text anywhere in the HTML files**. Instead, they are assembled by JavaScript
+when the page loads. A real visitor sees everything normally; a bot scraping
+the raw HTML finds nothing useful.
+
+This means you **cannot** find or change them by searching the HTML for the
+phone number or email address — you will not find them. Here is where to look
+instead.
+
+---
+
+### Changing the church office phone number
+
+Open `js/main.js` and find this block (search for `phone-church`):
+
+```javascript
+'phone-church': {
+  href: 'tel:+1' + '208' + '739' + '6320',
+  text: '+1 (208) 739-6320'
+},
+```
+
+Update both the `href` line (the actual dialling number, no spaces or dashes)
+and the `text` line (the number as you want it to appear on screen). For example,
+if the number changed to (208) 555-1234:
+
+```javascript
+'phone-church': {
+  href: 'tel:+1' + '208' + '555' + '1234',
+  text: '+1 (208) 555-1234'
+},
+```
+
+Keep the number split across string parts (with `+` between them) — that is
+intentional and is part of the obfuscation.
+
+---
+
+### Changing the church office email address
+
+The email address is stored in two pieces in `js/main.js`. Find this block
+(search for `email-office`):
+
+```javascript
+var u = atob('YmV0aGFueXByZXNvZmZpY2U=');
+...
+'email-office': {
+  href: 'mailto:' + u + '\u0040' + 'gmail' + '.com',
+  text: u + '\u0040' + 'gmail' + '.com'
+},
+```
+
+The `atob(...)` part decodes a scrambled version of the username (the part
+before the `@`). To change it:
+
+1. Take the new username — for example, if the new email is
+   `bethanychurch@gmail.com`, the username is `bethanychurch`.
+
+2. Encode it to Base64. The easiest way is to open your browser's developer
+   console (press F12, then click "Console") and type:
+   ```
+   btoa('bethanychurch')
+   ```
+   Press Enter. The console will show you the encoded value, e.g. `YmV0aGFueWNodXJjaA==`.
+
+3. Replace the old encoded value in `main.js`:
+   ```javascript
+   var u = atob('YmV0aGFueWNodXJjaA==');
+   ```
+
+4. If the domain also changed (e.g. from `gmail.com` to `outlook.com`), update
+   the domain portion too:
+   ```javascript
+   href: 'mailto:' + u + '\u0040' + 'outlook' + '.com',
+   text: u + '\u0040' + 'outlook' + '.com'
+   ```
+
+---
+
+### Changing the pastoral application email (pastor-opening.html)
+
+This email is handled separately on `pastor-opening.html` (not in `main.js`).
+Find this script near the bottom of that file:
+
+```javascript
+var u = atob('Y2F0d29tYW4zNjc3'); // base64-encoded username
+var d = 'yahoo' + '.com';
+```
+
+Follow the same steps as above — encode the new username with `btoa()` in the
+browser console, replace the value inside `atob(...)`, and update `d` if the
+domain changes.
+
+---
+
+### Why it is done this way
+
+Email addresses and phone numbers written as plain text in a webpage are
+routinely collected by automated bots and sold to spam lists. By assembling
+the contact details in JavaScript at the moment a real person loads the page,
+the information never exists as a readable string in the raw HTML file —
+so bots that scrape pages without running JavaScript (the vast majority) find
+nothing to harvest.
 
 ---
 
@@ -469,7 +572,8 @@ Here are the real links already wired into the site:
 | Google Maps | Links to Bethany Presbyterian Church listing |
 | Donate | !! Still a placeholder - needs to be updated |
 | YouTube | https://www.youtube.com/@BethanyPresbyterian-Ont |
-| Email | bethanypresoffice@gmail.com |
+| Email | bethanypresoffice@gmail.com (obfuscated — see "Changing Obfuscated Contact Details") |
+| Phone | +1 (208) 739-6320 (obfuscated — see "Changing Obfuscated Contact Details") |
 
 ---
 

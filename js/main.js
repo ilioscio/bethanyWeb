@@ -114,6 +114,30 @@
     }
   }, { passive: true });
 
+  /* ── Contact obfuscation ──────────────────────────────── */
+  // Assembles contact details at runtime — keeps plaintext out of HTML source.
+  // Add data-obf="key" to any <a> element; add the boolean data-obf-text
+  // attribute to also replace the link's visible text content.
+  (function() {
+    var u = atob('YmV0aGFueXByZXNvZmZpY2U=');
+    var contacts = {
+      'email-office': {
+        href: 'mailto:' + u + '\u0040' + 'gmail' + '.com',
+        text: u + '\u0040' + 'gmail' + '.com'
+      },
+      'phone-church': {
+        href: 'tel:+1' + '208' + '739' + '6320',
+        text: '+1 (208) 739-6320'
+      }
+    };
+    document.querySelectorAll('a[data-obf]').forEach(function(el) {
+      var key = el.getAttribute('data-obf');
+      if (!contacts[key]) return;
+      el.href = contacts[key].href;
+      if (el.hasAttribute('data-obf-text')) el.textContent = contacts[key].text;
+    });
+  })();
+
   /* ── Active nav link ──────────────────────────────────── */
   // Compares the page filename to each nav link's href and sets aria-current="page"
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
