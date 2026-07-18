@@ -6,7 +6,6 @@
  *  - Sticky header shadow on scroll
  *  - Active nav link highlighting based on current page
  *  - Keyboard accessibility for mobile nav (Escape to close, focus trap)
- *  - "Coming soon" tooltip on Give buttons (touch support)
  */
 
 (function () {
@@ -90,31 +89,7 @@
     });
   }
 
-  /* ── Give button tooltip (touch support) ─────────────── */
-  // On touch devices, :hover doesn't persist — toggle on tap, close on outside tap.
-  // Remove this block when the donation link is live.
-  document.querySelectorAll('.tooltip-wrapper').forEach(wrapper => {
-    wrapper.addEventListener('touchstart', (e) => {
-      e.preventDefault(); // prevent the link firing on first tap
-      const isOpen = wrapper.classList.contains('tooltip-open');
-      // Close any other open tooltips
-      document.querySelectorAll('.tooltip-wrapper.tooltip-open').forEach(w => {
-        w.classList.remove('tooltip-open');
-      });
-      if (!isOpen) wrapper.classList.add('tooltip-open');
-    }, { passive: false });
-  });
-
-  // Close tooltip when tapping anywhere else
-  document.addEventListener('touchstart', (e) => {
-    if (!e.target.closest('.tooltip-wrapper')) {
-      document.querySelectorAll('.tooltip-wrapper.tooltip-open').forEach(w => {
-        w.classList.remove('tooltip-open');
-      });
-    }
-  }, { passive: true });
-
-  /* ── Contact obfuscation ──────────────────────────────── */
+/* ── Contact obfuscation ──────────────────────────────── */
   // Assembles contact details at runtime — keeps plaintext out of HTML source.
   // Add data-obf="key" to any <a> element; add the boolean data-obf-text
   // attribute to also replace the link's visible text content.

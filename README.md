@@ -116,7 +116,7 @@ are waiting on information from the church. Here's a summary:
 | ~~Pastor's biography~~ | ~~`about.html` — pastor section~~ | ✅ Done |
 | ~~YouTube channel~~ | ~~All pages — footer & social section~~ | ✅ Done |
 | ~~Belief card details~~ | ~~`about.html` — "What We Believe"~~ | ✅ Done |
-| Donate link | All pages — "Give Online" buttons | The Tithe.ly or SimpleGive URL |
+| ~~Donate link~~ | ~~All pages — "Give Online" buttons~~ | ~~Vanco link~~ | ✅ Done 
 
 ✅ **Already done:** Pastor's name (Reverend Linda Toth), pastor's photo, church entrance photo, Facebook links, Google Maps embed, email address, YouTube channel, founding year, mission statement, welcome message, pastor bio, belief cards.
 
@@ -148,7 +148,7 @@ Search for the Give Online buttons, they look like this:
 ```
 Replace the `#` with your donation platform URL, for example:
 ```html
-<a href="https://tithe.ly/give?c=YOURCHURCHID" class="btn btn--give" ...>
+<a href="https://https://secure.myvanco.com/L-ZZ5J" class="btn btn--give" ...>
 ```
 There are a few Give buttons across the pages, search for `btn--give` to find them all.
 
