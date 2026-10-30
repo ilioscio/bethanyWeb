@@ -84,6 +84,7 @@
         <ul class="nav__list" role="list">
           <li><a href="./index.html"   class="nav__link" aria-current="page">Home</a></li>
           <li><a href="./about.html"   class="nav__link">About</a></li>
+          <li><a href="./history.html" class="nav__link">History</a></li>
           <li><a href="./contact.html" class="nav__link">Contact</a></li>
           <li><a href="https://secure.myvanco.com/L-ZZ5J" class="nav__link nav__link--give"
              rel="noopener noreferrer" target="_blank"
@@ -148,6 +149,108 @@
       </div>
     </section>
 
+
+
+    <!-- ─── PREACHING SCHEDULE (TEMPORARY) ─────────
+         Seasonal feature. Delete this whole <section>
+         once December is past, or swap the two cards
+         for the next months' schedule.
+         Source: ctx/nov2026-preach-sched.jpg,
+                 ctx/dec2026-preach-sched.jpg
+    ─────────────────────────────────────────────── -->
+    <section class="section section--lavender preaching" aria-labelledby="preaching-heading">
+      <div class="container" style="text-align:center;">
+
+        <header class="section__header">
+          <h2 id="preaching-heading" class="section__heading section__heading--cobalt">
+            Preaching Schedule
+          </h2>
+          <div class="divider divider--cobalt" aria-hidden="true">
+            <span class="divider__cross">✛</span>
+          </div>
+          <p class="section__lead preaching__note">
+            Who is in the pulpit this season.
+          </p>
+          <p class="preach-time">
+            <svg class="preach-time__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span class="preach-time__label">Sundays at</span>
+            <span class="preach-time__value">10:00 AM</span>
+          </p>
+        </header>
+
+        <div class="preach-grid">
+
+          <!-- November -->
+          <article class="preach-card">
+            <div class="preach-card__header">
+              <h3 class="preach-card__month">November</h3>
+              <p class="preach-card__tagline">Gather · Give Thanks · Believe</p>
+            </div>
+            <ul class="preach-list">
+              <li class="preach-row">
+                <span class="preach-row__date">Nov 1</span>
+                <span class="preach-row__who">Rev. Marianne Paul<span class="preach-row__tag">Communion</span></span>
+              </li>
+              <li class="preach-row">
+                <span class="preach-row__date">Nov 8</span>
+                <span class="preach-row__who">Carl Van Weerdhuizen</span>
+              </li>
+              <li class="preach-row">
+                <span class="preach-row__date">Nov 15</span>
+                <span class="preach-row__who">Rev. Steve Toth</span>
+              </li>
+              <li class="preach-row">
+                <span class="preach-row__date">Nov 22</span>
+                <span class="preach-row__who">Carl Van Weerdhuizen</span>
+              </li>
+              <li class="preach-row">
+                <span class="preach-row__date">Nov 29</span>
+                <span class="preach-row__who">Carl Van Weerdhuizen</span>
+              </li>
+            </ul>
+            <p class="preach-card__footer">Join us for worship in this season of Thanksgiving.</p>
+          </article>
+
+          <!-- December -->
+          <article class="preach-card preach-card--advent">
+            <div class="preach-card__header">
+              <h3 class="preach-card__month">December</h3>
+              <p class="preach-card__tagline">Celebrate the Advent Season</p>
+            </div>
+            <ul class="preach-list">
+              <li class="preach-row">
+                <span class="preach-row__date">Dec 6</span>
+                <span class="preach-row__who">Rev. Marianne Paul<span class="preach-row__tag">Communion</span></span>
+              </li>
+              <li class="preach-row">
+                <span class="preach-row__date">Dec 13</span>
+                <span class="preach-row__who">Carl Van Weerdhuizen</span>
+              </li>
+              <li class="preach-row">
+                <span class="preach-row__date">Dec 20</span>
+                <span class="preach-row__who">Carl Van Weerdhuizen</span>
+              </li>
+              <li class="preach-row">
+                <span class="preach-row__date">Dec 24</span>
+                <!-- PLACEHOLDER: confirm the Christmas Eve service time - the
+                     graphic does not list one, and it is unlikely to be 10 AM. -->
+                <span class="preach-row__who">Carl Van Weerdhuizen<span class="preach-row__tag preach-row__tag--gold">Christmas Eve</span></span>
+              </li>
+              <li class="preach-row">
+                <span class="preach-row__date">Dec 27</span>
+                <span class="preach-row__who">Rev. Steve Toth</span>
+              </li>
+            </ul>
+            <p class="preach-card__footer">All are welcome at the manger this Advent.</p>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
 
     <!-- ─── WELCOME / MISSION ──────────────────────── -->
     <section class="section section--ivory welcome" aria-labelledby="welcome-heading">
@@ -497,6 +600,7 @@
           <ul class="footer__nav-list" role="list">
             <li><a href="./index.html"   class="footer__nav-link">Home</a></li>
             <li><a href="./about.html"   class="footer__nav-link">About</a></li>
+            <li><a href="./history.html" class="footer__nav-link">Our History</a></li>
             <li><a href="./contact.html" class="footer__nav-link">Contact</a></li>
             <!-- Add new page links here as the site grows -->
           </ul>

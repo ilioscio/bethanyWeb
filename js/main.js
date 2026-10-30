@@ -6,6 +6,7 @@
  *  - Sticky header shadow on scroll
  *  - Active nav link highlighting based on current page
  *  - Keyboard accessibility for mobile nav (Escape to close, focus trap)
+ *  - History page timeline: scroll reveal, rail progress, era-nav highlighting
  */
 
 (function () {
@@ -101,8 +102,8 @@
         text: u + '\u0040' + 'gmail' + '.com'
       },
       'phone-church': {
-        href: 'tel:+1' + '208' + '739' + '6320',
-        text: '+1 (208) 739-6320'
+        href: 'tel:+1' + '541' + '889' + '5752',
+        text: '+1 (541) 889-5752'
       }
     };
     document.querySelectorAll('a[data-obf]').forEach(function(el) {
@@ -111,6 +112,77 @@
       el.href = contacts[key].href;
       if (el.hasAttribute('data-obf-text')) el.textContent = contacts[key].text;
     });
+  })();
+
+  /* ── History timeline (history.html only) ─────────────── */
+  // Three behaviors, all no-ops on pages without a .timeline:
+  //   1. Fade/slide each card in as it scrolls into view
+  //   2. Fill the vertical rail to match scroll progress through the timeline
+  //   3. Highlight the era-nav chip for the era currently on screen
+  (function () {
+    const timeline = document.querySelector('.timeline');
+    if (!timeline) return;
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* 1. Scroll reveal */
+    const revealables = timeline.querySelectorAll('.reveal');
+
+    if (prefersReduced || !('IntersectionObserver' in window)) {
+      // No animation: show everything immediately
+      revealables.forEach(el => el.classList.add('is-visible'));
+    } else {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+
+      revealables.forEach(el => revealObserver.observe(el));
+    }
+
+    /* 2 & 3. Rail fill + era-nav highlighting, both driven by scroll */
+    const railFill = timeline.querySelector('.timeline__rail-fill');
+    const eraLinks = Array.from(document.querySelectorAll('.era-nav__link'));
+    const eras     = Array.from(document.querySelectorAll('.timeline-era'));
+
+    let ticking = false;
+
+    function update() {
+      ticking = false;
+      const rect = timeline.getBoundingClientRect();
+
+      // Rail fill: progress measured against the midpoint of the viewport
+      if (railFill) {
+        const mark     = window.innerHeight * 0.5;
+        const progress = (mark - rect.top) / rect.height;
+        railFill.style.height = Math.min(100, Math.max(0, progress * 100)) + '%';
+      }
+
+      // Current era = the last era heading that has scrolled past the header
+      if (eras.length && eraLinks.length) {
+        const threshold = 140;
+        let currentId = null;
+        eras.forEach(era => {
+          if (era.getBoundingClientRect().top <= threshold) currentId = era.id;
+        });
+        eraLinks.forEach(link => {
+          link.classList.toggle('is-current', currentId !== null && link.hash === '#' + currentId);
+        });
+      }
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
   })();
 
   /* ── Active nav link ──────────────────────────────────── */

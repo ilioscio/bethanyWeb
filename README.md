@@ -46,6 +46,7 @@ bethanyWeb/
 ├── index.html       ← The homepage (the front door)
 ├── about.html       ← The "About Us" page
 ├── contact.html     ← The "Contact" page
+├── history.html     ← The "Our History" page (timeline + roll of pastors)
 │
 ├── css/
 │   └── style.css    ← Controls all the colors, fonts, and layout
@@ -117,6 +118,10 @@ are waiting on information from the church. Here's a summary:
 | ~~YouTube channel~~ | ~~All pages — footer & social section~~ | ✅ Done |
 | ~~Belief card details~~ | ~~`about.html` — "What We Believe"~~ | ✅ Done |
 | ~~Donate link~~ | ~~All pages — "Give Online" buttons~~ | ~~Vanco link~~ | ✅ Done 
+| Timeline events | `history.html` — look for `PLACEHOLDER` in the timeline | Dates and descriptions from the church history files |
+| Archive photos | `history.html` — the dashed "scan to come" boxes | Scanned photos, saved in `images/` |
+| Oral history video | `history.html` — "In Their Own Words" | A YouTube embed, once the interview is recorded |
+| Preaching schedule | `index.html` — the "PREACHING SCHEDULE (TEMPORARY)" section | Next season's dates; delete the whole section when it is out of date |
 
 ✅ **Already done:** Pastor's name (Reverend Linda Toth), pastor's photo, church entrance photo, Facebook links, Google Maps embed, email address, YouTube channel, founding year, mission statement, welcome message, pastor bio, belief cards.
 
@@ -179,19 +184,19 @@ Open `js/main.js` and find this block (search for `phone-church`):
 
 ```javascript
 'phone-church': {
-  href: 'tel:+1' + '208' + '739' + '6320',
-  text: '+1 (208) 739-6320'
+  href: 'tel:+1' + '541' + '889' + '5752',
+  text: '+1 (541) 889-5752'
 },
 ```
 
 Update both the `href` line (the actual dialling number, no spaces or dashes)
 and the `text` line (the number as you want it to appear on screen). For example,
-if the number changed to (208) 555-1234:
+if the number changed to (541) 555-1234:
 
 ```javascript
 'phone-church': {
-  href: 'tel:+1' + '208' + '555' + '1234',
-  text: '+1 (208) 555-1234'
+  href: 'tel:+1' + '541' + '555' + '1234',
+  text: '+1 (541) 555-1234'
 },
 ```
 
@@ -573,7 +578,7 @@ Here are the real links already wired into the site:
 | Donate | !! Still a placeholder - needs to be updated |
 | YouTube | https://www.youtube.com/@BethanyPresbyterian-Ont |
 | Email | bethanypresoffice@gmail.com (obfuscated — see "Changing Obfuscated Contact Details") |
-| Phone | +1 (208) 739-6320 (obfuscated — see "Changing Obfuscated Contact Details") |
+| Phone | +1 (541) 889-5752 (obfuscated — see "Changing Obfuscated Contact Details") |
 
 ---
 
